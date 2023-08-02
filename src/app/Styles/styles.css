@@ -1,0 +1,620 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 600;
+  overflow: auto;
+  background-color: #111114;
+}
+
+body {
+  overflow: auto;
+}
+
+button {
+  border-radius: 12px;
+}
+
+input {
+  border-radius: 6px;
+}
+
+p {
+  color: #6d7578;
+  font-size: large;
+  margin: 20px;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+
+/* STYLES FOR CONTAINERS IN ORDER TO 
+DYNAMICALLY CHANGE FOR THE AMOUNT OF 
+ITEM CARDS */
+
+.content-container {
+  background-color: #111114;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  height: fit-content;
+  width: 100%;
+  height: 100%;
+}
+
+.content-container h1 {
+  color: white;
+  text-align: center;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 500;
+  font-size: 3rem;
+  margin-bottom: 0;
+}
+
+.content-container p {
+  color: #6d7578;
+  font-size: medium;
+  margin: 20px;
+}
+
+@media screen and (min-width: 481px) {
+  .content-container h1 {
+    font-weight: 900;
+    font-size: 5rem;
+  }
+  .content-container p {
+    font-size: large;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* HEADER AND FOOTER STYLES */
+header {
+  /* background-color: #eeeeee; */
+  text-align: center;
+  width: fit-content;
+  margin: auto;
+  padding: 16px 32px;
+  color: #ffd369;
+  text-align: center;
+  font-family: "Zen Kaku Gothic New", sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+footer {
+  position: absolute;
+  display: block;
+  color: black;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 100px;
+  height: 50px;
+  width: fit-content;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* DROP DOWN MENU STYLES; BUTTONS, MENU ITEMS, HOVER STYLE ETC */
+
+/* Dropdown Button */
+.dropbtn {
+  margin: 10px;
+  width: 10rem;
+  height: 4rem;
+  background-color: #ffd369;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bolder;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: fit-content;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+/* Links inside the dropdown */
+.dropdown-content p {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content p:hover {
+  background-color: #ffd369;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #111114;
+  color: white;
+  border-color: #ffd369;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* SELECTION AREA GRID STYLES, FOR THE TWO DROP DOWNS, TWO SELECTIONS AND ONE BUTTON */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 250px 250px 250px;
+  position: relative;
+  justify-content: center;
+}
+
+.grid-item {
+  max-width: fit-content;
+  margin: 20px;
+  text-align: center;
+}
+
+.grid-button {
+  margin: 10px;
+  background-color: #111114;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bolder;
+  border-color: #ffd369;
+  text-align: center;
+  width: 10rem;
+  height: 4rem;
+}
+
+.selection-area {
+  margin: 10px;
+  color: #222831;
+  padding: 16px;
+  font-size: 0.8rem;
+  width: 180px;
+  height: 1rem;
+  overflow-wrap: normal;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.grid-button:active {
+  background-color: #ffd369;
+  color: #111114;
+  transition: 0s 0.5;
+}
+
+@media screen and (min-width: 1025px) {
+  .grid-button:hover {
+    background-color: #ffd369;
+    color: #111114;
+  }
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* STYLES FOR ITEM CARDS AND ITEM CARD GRIDS */
+
+.itemCard {
+  transform: translateY(0, 0.5s);
+  position: relative;
+  margin: 10px;
+  padding: 10px;
+  top: 0;
+  background-color: #141417;
+  text-align: center;
+  width: 20em;
+  height: 24em;
+  overflow: auto;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border-radius: 5px;
+
+  transition: all 0.7s;
+}
+
+.itemCard h1 {
+  font-size: 1.5em;
+  color: white;
+}
+
+.itemCard p {
+  text-align: left;
+  color: white;
+}
+
+.itemCard img {
+  padding: 20px;
+  max-width: 60%;
+  max-height: 30%;
+}
+
+.itemCard .closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #8c0a22;
+  font-size: 1em;
+  width: 7%;
+  height: 6%;
+  margin-top: 5px;
+  margin-right: 5px;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.2em;
+}
+
+.itemCard .closeButton:active {
+  background-color: #ffd369;
+  color: #111114;
+  transition: 0s 0.5;
+}
+@media screen and (min-width: 1025px) {
+  .itemCard .closeButton:hover {
+    background-color: #ffd369;
+    color: #111114;
+  }
+
+  .itemCard .expandButton:hover {
+    background-color: #ffd369;
+    color: white;
+  }
+}
+
+.itemCard .expandButton {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  background-color: white;
+  font-size: 1em;
+  width: 45%;
+  height: 8%;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.expandButton:active {
+  background-color: #ffd369;
+  color: white;
+  transition: 0s 0.5;
+}
+
+.item-grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: 25em 25em 25em;
+  justify-content: center;
+}
+
+.item-grid-item {
+  max-width: fit-content;
+  max-height: fit-content;
+  margin: 20px;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* STYLES FOR SEARCH BAR */
+
+.search-bar {
+  /* position: absolute; */
+  margin: 10px;
+  color: #222831;
+  padding: 16px;
+  font-size: 0.8rem;
+  width: 300px;
+  height: 1.5rem;
+  overflow-wrap: normal;
+  font-weight: bolder;
+  text-align: left;
+}
+
+@media screen and (min-width: 481px) {
+  .search-bar {
+    width: 40rem;
+    height: 1rem;
+  }
+}
+/* -------------------------------------------------------------------------------------------------------------- */
+/* STYLES FOR EXPANDED ITEM CARD DIV */
+
+.expanded-div {
+  position: relative;
+  height: 90vh;
+  width: 90vw;
+  right: 0;
+  left: 0;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1.5rem;
+  margin-bottom: 50px;
+  z-index: 5;
+  transition: all 0.7s ease-in-out;
+  background-color: #141417;
+  text-align: center;
+}
+
+.expanded-div p {
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+}
+.expanded-div img {
+  position: absolute;
+  padding: 20px;
+  max-width: 30%;
+  max-height: 30%;
+  left: 0;
+}
+.expanded-div h1 {
+  font-size: 1.8rem;
+}
+
+/*TABLETS */
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .expanded-div {
+    position: fixed;
+    height: 80%;
+    width: 80%;
+    text-align: center;
+  }
+
+  .expanded-div h1 {
+    font-size: 3rem;
+  }
+
+  .expanded-div p {
+    font-size: 2rem;
+    text-align: center;
+  }
+  .expanded-div img {
+    position: static;
+    width: 30%;
+  }
+}
+
+/*DESKTOP */
+@media screen and (min-width: 1025px) {
+  .expanded-div {
+    position: relative;
+    height: 500px;
+    width: 90%;
+    text-align: left;
+  }
+
+  .expanded-div p {
+    font-size: 2rem;
+    text-align: left;
+  }
+  .expanded-div img {
+    position: static;
+    max-width: 20%;
+  }
+
+  .expanded-div .closeButton:hover {
+    background-color: #ffd369;
+    color: #111114;
+  }
+
+  .expanded-div .expandButton:hover {
+    background-color: #ffd369;
+    color: #111114;
+  }
+}
+
+.expanded-div .closeButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #8c0a22;
+  font-size: 1em;
+  width: 1.1em;
+  height: 1.1em;
+  margin-top: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border: none;
+  color: white;
+  border-radius: 50%;
+  font-size: 1.2em;
+}
+
+.expanded-div .closeButton:active {
+  background-color: #ffd369;
+  color: #111114;
+  transition: 0s 0.5;
+}
+
+.expanded-div .expandButton {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  background-color: white;
+  font-size: 1em;
+  width: 40%;
+  max-width: 50%;
+  height: 5%;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.expandButton:active {
+  background-color: #ffd369;
+  color: white;
+  transition: 0s 0.5;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* GRAPH STYLES FOR POSITIONING GRAPHS */
+
+.graphDiv {
+  position: absolute;
+  left: 0;
+  right: 10%;
+  top: 40%;
+  width: 95%;
+  height: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* Tablets*/
+@media screen and (min-width: 481px) and (max-width: 1029px) {
+  .graphDiv {
+    position: absolute;
+    margin-top: 20%;
+    right: 0;
+    width: 80%;
+    height: 35%;
+  }
+}
+/*Desktop*/
+@media screen and (min-width: 1030px) {
+  .graphDiv {
+    position: absolute;
+    right: 0;
+    left: 15%;
+    top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    height: 50%;
+  }
+}
+
+.graphDiv p {
+  color: black;
+  font-size: large;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+/* GRAPH STYLES FOR FAVOURITE BUTTONS */
+
+.favouriteButton {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  background-color: #8c0a22;
+  font-size: 1em;
+  width: 40%;
+  height: 2rem;
+  border: none;
+  color: white;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 481px) {
+  .favouriteButton {
+    width: 30%;
+    max-width: 200px;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .favouriteButton:hover {
+    background-color: #ffd369;
+    color: white;
+  }
+}
+.favouriteButton:active {
+  background-color: #ffd369;
+  color: white;
+  transition: 0s 0.5;
+}
+
+.submitButton {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  background-color: white;
+  font-size: 1em;
+  width: 5rem;
+  max-width: 6rem;
+  height: 2.5rem;
+  border: none;
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.submitButton:active {
+  background-color: #8c0a22;
+  color: white;
+  transition: 0s 0.5;
+}
+
+@media screen and (min-width: 1025px) {
+  .submitButton:hover {
+    background-color: #8c0a22;
+    color: white;
+  }
+}
+
+.like-button {
+  position: absolute;
+  left: 5%;
+  top: 3%;
+  font-size: 13px;
+  cursor: pointer;
+}
+.like-button:before {
+  font-size: 3em;
+  color: #6d7578;
+  content: "★";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.like-button:after {
+  font-size: 3em;
+  color: #ffd369;
+  content: "★";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.2s;
+}
+.liked::after {
+  transform: translate(-50%, -50%) scale(1.1);
+}
