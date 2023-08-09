@@ -1,36 +1,38 @@
-import axios from "axios";
 import { NextResponse } from "next/server";
 
 //TODO: rewrite this function without axios, and without replaceAll
-export async function POST(request) {
+// const encodedItemName =  encodeUriComponent(itemName)
+export async function GET(request) {
   console.log("Hello");
   try {
     console.log("Started my data get request");
     let data = [];
-    let finalData;
-    let itemName = request.body.name;
-    console.log(itemName);
-    itemName = itemName.replaceAll(", ", "%7C");
-    itemName = itemName.replaceAll(",", "%7C");
-    itemName = itemName.replace(/ /g, "%20");
-    itemName = itemName.replaceAll("(", "%28");
-    itemName = itemName.replaceAll("(", "%29");
-    itemName = itemName.replaceAll("'", "%27");
-    console.log(itemName);
-    let my_url = `https://api.weirdgloop.org/exchange/history/rs/latest?name=${itemName}`;
-    const options = {
+    const { searchParams } = new URL(request.url);
+    const ids = searchParams.get("name");
+    console.log("Item name is: " + ids);
+    let new_ids = ids
+      .split(",")
+      .map((item) => item.trim().replace(/\s+/g, " "))
+      .join("|");
+    console.log("New item id is " + new_ids);
+    let my_url = `https://api.weirdgloop.org/exchange/history/rs/latest?name=${encodeURIComponent(
+      new_ids
+    )}`;
+    console.log(my_url);
+    const response = await fetch(my_url, {
       headers: {
-        accept: "application/json",
+        "Content-Type": "application/json",
         "User-Agent": "GEX Application Dev",
       },
-    };
-
-    const response = await axios.get(my_url, options);
-    console.log(`Response Status: ${response.status}`);
-    console.log(response.data);
-    return NextResponse.json(response.json());
+    });
+    data = await response.json();
+    console.log(data);
+    return NextResponse.json({ data });
   } catch (error) {
     console.log(error);
-    return res.status(500).json({ error: "Something went wrong" });
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

@@ -94,32 +94,34 @@ function ItemSearch(props) {
 
   function populateList(inputListName) {
     let inputList = splitThenURL(inputListName);
+    console.log(inputListName);
     checkValidImages(inputList).then((url) => {
       setValidItemText("");
-      fetch("/api/getData", {
-        method: "POST",
+      fetch(`/api/getData?name=${encodeURIComponent(inputListName)}`, {
+        method: "GET",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({ name: inputListName }),
       })
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          if (data.success !== false) {
-            Object.keys(data).forEach((key) => {
-              if (!itemList.find((e) => e.itemID === data[key].id)) {
+          console.log(data);
+          if (data["data"].success !== false) {
+            Object.keys(data["data"]).forEach((key) => {
+              console.log(key);
+              if (!itemList.find((e) => e.itemID === data["data"][key].id)) {
                 setItemList((prevValues) => {
                   return [
                     ...prevValues,
                     {
                       imageUrl: makeSingleUrl(key),
                       name: key,
-                      itemID: data[key].id,
-                      price: data[key].price.toLocaleString("en-US"),
-                      timeStamp: data[key].timestamp.substring(0, 10),
+                      itemID: data["data"][key].id,
+                      price: data["data"][key].price.toLocaleString("en-US"),
+                      timeStamp: data["data"][key].timestamp.substring(0, 10),
                     },
                   ];
                 });

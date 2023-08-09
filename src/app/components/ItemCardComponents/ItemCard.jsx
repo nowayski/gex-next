@@ -20,7 +20,7 @@ function ItemCard(props) {
   //This is picked up by express server and returns a list of JSON objects, which is set with setGraphData.
   function readData(event) {
     console.log("Reading Data");
-    fetch(`/getPriceHistory?name=${event.target.id}`, {
+    fetch(`/api/getPriceHistory?name=${event.target.id}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -31,7 +31,8 @@ function ItemCard(props) {
         return res.json();
       })
       .then((data) => {
-        setGraphData(Object.values(data)[0]);
+        console.log(data);
+        setGraphData(Object.values(data["data"])[0]);
       })
       .catch((error) => console.log(error));
   }
